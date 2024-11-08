@@ -73,8 +73,6 @@ tqdm, pandas, matplotlib
 - **Librosa**: Advanced audio processing and feature extraction
 - **Trimesh & Open3D**: Robust 3D model manipulation and visualization
 
-> *"From text to 3D, we've got your augmentation needs covered!"*
-
 ## Usage
 1. Select data type (Text/Image/Audio/3D)
 2. Upload your data
