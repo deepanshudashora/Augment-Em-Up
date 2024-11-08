@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container glass-effect">
+        <h1>Data Augmentation Tool</h1>
+        
+        <div class="description">
+            <h2>Choose Your Data Type</h2>
+            <div class="data-types">
+                <div class="data-type-card">
+                    <h3>Text Augmentation</h3>
+                    <p>Process and augment text data with various techniques:</p>
+                    <ul>
+                        <li>Text preprocessing (tokenization, lemmatization, etc.)</li>
+                        <li>Synonym replacement</li>
+                        <li>Random insertion/deletion</li>
+                        <li>And more...</li>
+                    </ul>
+                    <button onclick="window.location.href='/text_upload'">Start Text Processing</button>
+                </div>
+                
+                <div class="data-type-card">
+                    <h3>Image Augmentation</h3>
+                    <p>Transform and augment images with powerful techniques:</p>
+                    <ul>
+                        <li>Basic preprocessing (blur, sharpen, contrast)</li>
+                        <li>Geometric transformations</li>
+                        <li>Color adjustments</li>
+                        <li>Advanced distortions</li>
+                    </ul>
+                    <button onclick="window.location.href='/image_upload'">Start Image Processing</button>
+                </div>
+
+                <div class="data-type-card">
+                    <h3>Audio Augmentation</h3>
+                    <p>Process and augment audio files with various techniques:</p>
+                    <ul>
+                        <li>Noise reduction and filtering</li>
+                        <li>Time stretching and pitch shifting</li>
+                        <li>Volume adjustment</li>
+                        <li>Audio effects and transformations</li>
+                    </ul>
+                    <button onclick="window.location.href='/audio_upload'">Start Audio Processing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

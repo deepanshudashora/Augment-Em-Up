@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Preprocessing - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>3D Preprocessing</h1>
+
+        <!-- Input Display Section -->
+        <div class="section-container">
+            <h2>Input Model</h2>
+            <div class="preview-container" id="inputModelViewer"></div>
+            <div class="model-info">
+                <p id="modelStats"></p>
+            </div>
+        </div>
+
+        <!-- Preprocessing Options Section -->
+        <div class="section-container">
+            <h2>Preprocessing Options</h2>
+            <div class="preprocessing-controls">
+                <div class="select-all-container">
+                    <label class="select-all-label">
+                        <input type="checkbox" id="selectAll" checked>
+                        <span>Apply All Options</span>
+                    </label>
+                </div>
+                <div class="options-grid">
+                    <label><input type="checkbox" name="3d_preprocessing" value="normalize_scale" checked> Normalize Scale</label>
+                    <label><input type="checkbox" name="3d_preprocessing" value="center_model" checked> Center Model</label>
+                    <label><input type="checkbox" name="3d_preprocessing" value="remove_duplicates" checked> Remove Duplicates</label>
+                    <label><input type="checkbox" name="3d_preprocessing" value="fix_normals" checked> Fix Normals</label>
+                    <label><input type="checkbox" name="3d_preprocessing" value="simplify_mesh" checked> Simplify Mesh</label>
+                    <label><input type="checkbox" name="3d_preprocessing" value="smooth_surface" checked> Smooth Surface</label>
+                </div>
+            </div>
+            <div class="center-button">
+                <button id="applyPreprocessingBtn" onclick="apply3DPreprocessing()">Apply Preprocessing</button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="section-container" style="display: none;">
+            <h2>Preprocessing Results</h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <h3>Step-wise Results</h3>
+                    <div id="stepwiseResults" class="step-results">
+                        <!-- Step results will be added here -->
+                    </div>
+                </div>
+                <div class="result-item">
+                    <h3>Final Result</h3>
+                    <div id="finalModelViewer" class="preview-container"></div>
+                    <div id="finalStats" class="model-info"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/3d_upload'">Back</button>
+            </div>
+            <div class="nav-right">
+                <button id="nextButton" onclick="window.location.href='/3d_augment'" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/3d_processing.js') }}"></script>
+</body>
+</html> 

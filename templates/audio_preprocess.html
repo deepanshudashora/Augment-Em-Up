@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Preprocessing - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container glass-effect">
+        <h1>Audio Preprocessing</h1>
+        
+        <div class="original-audio">
+            <h3>Original Audio:</h3>
+            <div class="audio-player">
+                <audio id="originalAudio" controls>
+                    <source src="data:audio/wav;base64,{{ original_audio }}" type="audio/wav">
+                </audio>
+                <div class="waveform" id="originalWaveform"></div>
+            </div>
+        </div>
+
+        <div class="preprocessing-options">
+            <h3>Select Preprocessing Steps:</h3>
+            <div class="select-all-container">
+                <label>
+                    <input type="checkbox" id="select-all-preprocessing" checked> Select All
+                </label>
+            </div>
+            <div class="options-grid">
+                <label>
+                    <input type="checkbox" name="audio_preprocessing" value="noise_reduction" checked> 
+                    Noise Reduction
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_preprocessing" value="normalize" checked> 
+                    Normalize
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_preprocessing" value="lowpass_filter" checked> 
+                    Low Pass Filter
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_preprocessing" value="highpass_filter" checked> 
+                    High Pass Filter
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_preprocessing" value="trim_silence" checked> 
+                    Trim Silence
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_preprocessing" value="stereo_to_mono" checked> 
+                    Stereo to Mono
+                </label>
+            </div>
+            <button id="applyPreprocessingBtn" onclick="applyAudioPreprocessing()">Apply Preprocessing</button>
+        </div>
+
+        <div class="parallel-results">
+            <div class="result-column">
+                <h3>Step-wise Results:</h3>
+                <div id="preprocessing-results" class="scrollable-results"></div>
+            </div>
+            
+            <div class="result-column">
+                <h3>Final Result:</h3>
+                <div id="merged-preprocessing-result" class="scrollable-results"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/audio_upload'">Back</button>
+                <button onclick="window.location.href='/'">Home</button>
+            </div>
+            <div class="nav-right">
+                <button id="nextButton" onclick="navigateToAugment()" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="{{ url_for('static', path='/js/audio_processing.js') }}"></script>
+</body>
+</html> 

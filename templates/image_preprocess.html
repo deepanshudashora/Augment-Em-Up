@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Preprocessing - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container glass-effect">
+        <h1>Image Preprocessing</h1>
+        
+        <div class="image-info">
+            <h3>Original Image:</h3>
+            <img src="data:image/png;base64,{{ original_image }}" alt="Original Image" class="preview-image">
+            <p class="image-size">Size: {{ original_size }}</p>
+        </div>
+
+        <div class="preprocessing-options">
+            <h3>Select Preprocessing Steps:</h3>
+            <div class="select-all-container">
+                <label>
+                    <input type="checkbox" id="select-all-preprocessing" checked> Select All
+                </label>
+            </div>
+            <div class="options-grid">
+                <label>
+                    <input type="checkbox" name="image_preprocessing" value="grayscale" checked> Grayscale
+                </label>
+                <label>
+                    <input type="checkbox" name="image_preprocessing" value="blur" checked> Blur
+                </label>
+                <label>
+                    <input type="checkbox" name="image_preprocessing" value="sharpen" checked> Sharpen
+                </label>
+                <label>
+                    <input type="checkbox" name="image_preprocessing" value="contrast" checked> Contrast
+                </label>
+                <label>
+                    <input type="checkbox" name="image_preprocessing" value="brightness" checked> Brightness
+                </label>
+                <label>
+                    <input type="checkbox" name="image_preprocessing" value="equalize" checked> Equalize
+                </label>
+            </div>
+            <button onclick="applyImagePreprocessing()">Apply Preprocessing</button>
+        </div>
+
+        <div class="parallel-results">
+            <div class="result-column">
+                <h3>Step-wise Results:</h3>
+                <div id="preprocessing-results" class="scrollable-results">
+                    {% if preprocessing_results %}
+                        {% for step, result in preprocessing_results.items() %}
+                            <div class="image-result">
+                                <h4>{{ step|upper|replace('_', ' ') }}</h4>
+                                <img src="data:image/png;base64,{{ result }}" alt="{{ step }}">
+                                <p class="image-size">Size: {{ result_sizes[step] }}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="result-column">
+                <h3>Merged Output:</h3>
+                <div id="merged-preprocessing-result" class="scrollable-results">
+                    {% if merged_result %}
+                        <div class="image-result">
+                            <h4>FINAL RESULT</h4>
+                            <img src="data:image/png;base64,{{ merged_result }}" alt="Merged Result">
+                            <p class="image-size">Size: {{ merged_size }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/image_upload'">Back</button>
+                <button onclick="window.location.href='/'">Home</button>
+            </div>
+            <div class="nav-right">
+                <button onclick="navigateToAugment()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/image_processing.js') }}"></script>
+</body>
+</html> 

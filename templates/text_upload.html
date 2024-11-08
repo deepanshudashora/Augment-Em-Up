@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Upload - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Upload</h1>
+        
+        <div class="upload-section">
+            <input type="file" id="textFile" accept=".txt" onchange="handleFileUpload(event)">
+        </div>
+
+        <div class="edit-section">
+            <textarea id="textContent" class="text-area">{{ text_content }}</textarea>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='/'">Back</button>
+            <button onclick="updateText()">Save Changes</button>
+            <button onclick="window.location.href='/preprocess'">Next</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html> 

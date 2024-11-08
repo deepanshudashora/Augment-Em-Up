@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Augmentation - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Augmentation</h1>
+
+        <div class="augmentation-options">
+            <h3>Select Augmentation Techniques:</h3>
+            <div class="select-all-container">
+                <label>
+                    <input type="checkbox" id="select-all-augmentation" checked> Select All
+                </label>
+            </div>
+            <div class="options-grid">
+                <label>
+                    <input type="checkbox" name="augmentation" value="synonym_replacement" checked> Synonym Replacement
+                </label>
+                <label>
+                    <input type="checkbox" name="augmentation" value="random_insertion" checked> Random Insertion
+                </label>
+                <label>
+                    <input type="checkbox" name="augmentation" value="random_swap" checked> Random Swap
+                </label>
+                <label>
+                    <input type="checkbox" name="augmentation" value="random_deletion" checked> Random Deletion
+                </label>
+            </div>
+            <button onclick="applyAugmentation()">Apply Augmentation</button>
+        </div>
+
+        <div class="parallel-results" {% if not augmented_text %}style="display: none;"{% endif %}>
+            <div class="result-column">
+                <h3>Original Text Augmentation:</h3>
+                <div id="original-augmentation-results" class="scrollable-results"></div>
+            </div>
+            <div class="result-column">
+                <h3>Preprocessed Text Augmentation:</h3>
+                <div id="preprocessed-augmentation-results" class="scrollable-results"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/preprocess'">Back</button>
+                <button onclick="clearStorageAndGoHome()">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Augmentation - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>3D Augmentation</h1>
+
+        <!-- Input Model Section -->
+        <div class="section-container">
+            <h2>Input Model</h2>
+            <div class="preview-container" id="inputModelViewer"></div>
+        </div>
+
+        <!-- Augmentation Options Section -->
+        <div class="section-container">
+            <h2>Augmentation Options</h2>
+            <div class="select-all-option">
+                <label>
+                    <input type="checkbox" id="selectAll" checked> Apply All Options
+                </label>
+            </div>
+            <div class="options-grid">
+                <label><input type="checkbox" name="3d_augmentation" value="rotate" checked> Rotation</label>
+                <label><input type="checkbox" name="3d_augmentation" value="scale" checked> Scaling</label>
+                <label><input type="checkbox" name="3d_augmentation" value="translate" checked> Translation</label>
+                <label><input type="checkbox" name="3d_augmentation" value="noise" checked> Add Noise</label>
+                <label><input type="checkbox" name="3d_augmentation" value="smooth" checked> Smoothing</label>
+            </div>
+            <div class="center-button">
+                <button id="applyAugmentationBtn" onclick="apply3DAugmentation()">Apply Augmentation</button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="section-container" style="display: none;">
+            <div class="split-view">
+                <div class="results-column">
+                    <h3>Original Model Results</h3>
+                    <div id="originalResults" class="results-scroll"></div>
+                </div>
+                <div class="results-column">
+                    <h3>Preprocessed Model Results</h3>
+                    <div id="preprocessedResults" class="results-scroll"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/3d_preprocess'">Back</button>
+            </div>
+            <div class="nav-right">
+                <button onclick="window.location.href='/'">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/3d_processing.js') }}"></script>
+</body>
+</html> 

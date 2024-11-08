@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Augmentation Tool</h1>
+        <div class="cards-grid">
+            <div class="cards-row">
+                <!-- First Row -->
+                <div class="card glass-effect">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h2>Text Data</h2>
+                        <p>Upload and augment text documents</p>
+                        <button onclick="window.location.href='/text_upload'">Start</button>
+                    </div>
+                </div>
+
+                <div class="card glass-effect">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                        </div>
+                        <h2>Image Data</h2>
+                        <p>Upload and augment image files</p>
+                        <button onclick="window.location.href='/image_upload'">Start</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-row">
+                <!-- Second Row -->
+                <div class="card glass-effect">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M2 10h4m16 0h-4"></path>
+                                <path d="M6 10c0-4.418 2.686-8 6-8s6 3.582 6 8-2.686 8-6 8-6-3.582-6-8z"></path>
+                            </svg>
+                        </div>
+                        <h2>Audio Data</h2>
+                        <p>Upload and augment audio files</p>
+                        <button onclick="window.location.href='/audio_upload'">Start</button>
+                    </div>
+                </div>
+
+                <div class="card glass-effect">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3L3 8.5V15.5L12 21L21 15.5V8.5L12 3Z"/>
+                                <path d="M12 3V21"/>
+                                <path d="M3 8.5L21 15.5"/>
+                                <path d="M21 8.5L3 15.5"/>
+                            </svg>
+                        </div>
+                        <h2>3D Data</h2>
+                        <p>Upload and augment 3D models and point clouds</p>
+                        <button onclick="window.location.href='/3d_upload'">Start</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

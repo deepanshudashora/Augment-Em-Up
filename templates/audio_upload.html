@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Upload - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container glass-effect">
+        <h1>Audio Upload</h1>
+        
+        <div class="upload-section">
+            <h3>Upload Your Audio File</h3>
+            <input type="file" id="audioFile" accept="audio/*" onchange="handleAudioUpload(event)">
+            <p class="file-info">Supported formats: MP3, WAV</p>
+        </div>
+
+        <div class="audio-preview">
+            <h3>Preview:</h3>
+            <div class="audio-player">
+                <audio id="audioPreview" controls>
+                    Your browser does not support the audio element.
+                </audio>
+                <div class="audio-info">
+                    <p id="audioName"></p>
+                    <p id="audioDuration"></p>
+                    <p id="audioSize"></p>
+                </div>
+                <div class="waveform" id="waveform"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/'">Home</button>
+            </div>
+            <div class="nav-right">
+                <button id="nextButton" onclick="navigateToPreprocess()" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="{{ url_for('static', path='/js/audio_processing.js') }}"></script>
+</body>
+</html> 

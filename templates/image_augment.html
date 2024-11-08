@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Augmentation - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container glass-effect">
+        <h1>Image Augmentation</h1>
+
+        <div class="original-images">
+            <div class="image-info">
+                <h3>Original Image:</h3>
+                <img src="data:image/png;base64,{{ original_image }}" alt="Original Image" class="preview-image">
+                <p class="image-size">Size: {{ original_size }}</p>
+            </div>
+            
+            {% if preprocessed_image %}
+            <div class="image-info">
+                <h3>Preprocessed Image:</h3>
+                <img src="data:image/png;base64,{{ preprocessed_image }}" alt="Preprocessed Image" class="preview-image">
+                <p class="image-size">Size: {{ preprocessed_size }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="augmentation-options">
+            <h3>Select Augmentation Techniques:</h3>
+            <div class="select-all-container">
+                <label>
+                    <input type="checkbox" id="select-all-augmentation" checked> Select All
+                </label>
+            </div>
+            <div class="options-grid">
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="horizontal_flip" checked> Horizontal Flip
+                </label>
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="vertical_flip" checked> Vertical Flip
+                </label>
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="rotate" checked> Rotate
+                </label>
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="random_brightness_contrast" checked> Random Brightness/Contrast
+                </label>
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="random_gamma" checked> Random Gamma
+                </label>
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="blur" checked> Blur
+                </label>
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="elastic" checked> Elastic Transform
+                </label>
+                <label>
+                    <input type="checkbox" name="image_augmentation" value="grid_distortion" checked> Grid Distortion
+                </label>
+            </div>
+            <button onclick="applyImageAugmentation()">Apply Augmentation</button>
+        </div>
+
+        <div class="parallel-results">
+            <div class="result-column">
+                <h3>Original Image Augmentation:</h3>
+                <div id="original-augmentation-results" class="scrollable-results"></div>
+            </div>
+            <div class="result-column">
+                <h3>Preprocessed Image Augmentation:</h3>
+                <div id="preprocessed-augmentation-results" class="scrollable-results"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/image_preprocess'">Back</button>
+                <button onclick="window.location.href='/'">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/image_processing.js') }}"></script>
+</body>
+</html> 

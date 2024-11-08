@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Upload - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+</head>
+<body>
+    <div class="container glass-effect">
+        <h1>3D Upload</h1>
+        
+        <div class="upload-section">
+            <h3>Upload Your 3D File</h3>
+            <input type="file" id="3dFile" accept=".obj,.stl,.ply,.fbx,.off" onchange="handle3DUpload(event)">
+            <p class="file-info">Supported formats: OBJ, STL, PLY, FBX, OFF</p>
+        </div>
+
+        <div class="model-preview">
+            <h3>Model Information:</h3>
+            <div class="model-info">
+                <p id="modelName"></p>
+                <p id="modelSize"></p>
+                <p id="modelFormat"></p>
+                <p id="modelVertices"></p>
+                <p id="modelFaces"></p>
+            </div>
+            <div class="preview-container" id="3dPreview"></div>
+        </div>
+
+        <div id="error-container"></div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/'">Home</button>
+            </div>
+            <div class="nav-right">
+                <button id="nextButton" onclick="window.location.href='/3d_preprocess'" disabled>Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/3d_processing.js') }}"></script>
+</body>
+</html> 

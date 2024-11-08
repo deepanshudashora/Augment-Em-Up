@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Preprocessing - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Preprocessing</h1>
+        
+        <div class="text-display">
+            <h3>Original Text:</h3>
+            <div class="text-box">{{ original_text }}</div>
+        </div>
+
+        <div class="preprocessing-options">
+            <h3>Select Preprocessing Steps:</h3>
+            <div class="select-all-container">
+                <label>
+                    <input type="checkbox" id="select-all-preprocessing" checked> 
+                    Select All
+                </label>
+            </div>
+            <div class="options-grid">
+                <label>
+                    <input type="checkbox" name="preprocessing" value="tokenize" 
+                           {% if selected_steps %}
+                               {% if 'tokenize' in selected_steps %}checked{% endif %}
+                           {% else %}checked{% endif %}> 
+                    Tokenize
+                </label>
+                <label>
+                    <input type="checkbox" name="preprocessing" value="lowercase"
+                           {% if selected_steps %}
+                               {% if 'lowercase' in selected_steps %}checked{% endif %}
+                           {% else %}checked{% endif %}> 
+                    Convert to Lowercase
+                </label>
+                <label>
+                    <input type="checkbox" name="preprocessing" value="remove_punctuation"
+                           {% if selected_steps %}
+                               {% if 'remove_punctuation' in selected_steps %}checked{% endif %}
+                           {% else %}checked{% endif %}> 
+                    Remove Punctuation
+                </label>
+                <label>
+                    <input type="checkbox" name="preprocessing" value="remove_stopwords"
+                           {% if selected_steps %}
+                               {% if 'remove_stopwords' in selected_steps %}checked{% endif %}
+                           {% else %}checked{% endif %}> 
+                    Remove Stopwords
+                </label>
+                <label>
+                    <input type="checkbox" name="preprocessing" value="remove_numbers"
+                           {% if selected_steps %}
+                               {% if 'remove_numbers' in selected_steps %}checked{% endif %}
+                           {% else %}checked{% endif %}> 
+                    Remove Numbers
+                </label>
+                <label>
+                    <input type="checkbox" name="preprocessing" value="lemmatize"
+                           {% if selected_steps %}
+                               {% if 'lemmatize' in selected_steps %}checked{% endif %}
+                           {% else %}checked{% endif %}> 
+                    Lemmatization
+                </label>
+            </div>
+            <button onclick="applyPreprocessing()">Apply Preprocessing</button>
+        </div>
+
+        <div class="results-container" {% if not preprocessing_results %}style="display: none;"{% endif %}>
+            <h3>Step-wise Results:</h3>
+            <div id="preprocessing-results" class="scrollable-results">
+                {% if preprocessing_results %}
+                    {% for step, result in preprocessing_results.items() %}
+                        <div>
+                            <h4>{{ step|upper|replace('_', ' ') }}:</h4>
+                            <div class="text-box">
+                                {% if result is string %}
+                                    {{ result }}
+                                {% else %}
+                                    {{ result|join(' ') }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <h3>Merged Output:</h3>
+            <div id="merged-preprocessing-result" class="text-box">
+                {{ merged_result }}
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/text_upload'">Back</button>
+                <button onclick="clearStorageAndGoHome()">Home</button>
+            </div>
+            <div class="nav-right">
+                <button onclick="navigateToAugment()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html> 

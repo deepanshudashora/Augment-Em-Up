@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Augmentation - Data Augmentation Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container glass-effect">
+        <h1>Audio Augmentation</h1>
+
+        <div class="original-audio">
+            <h3>Original Audio:</h3>
+            <div class="audio-player">
+                <audio controls>
+                    <source src="data:audio/wav;base64,{{ original_audio }}" type="audio/wav">
+                </audio>
+                <div class="waveform" id="originalWaveform"></div>
+            </div>
+        </div>
+
+        <div class="preprocessed-audio">
+            <h3>Preprocessed Audio:</h3>
+            <div class="audio-player">
+                <audio controls>
+                    <source src="data:audio/wav;base64,{{ preprocessed_audio }}" type="audio/wav">
+                </audio>
+                <div class="waveform" id="preprocessedWaveform"></div>
+            </div>
+        </div>
+
+        <div class="augmentation-options">
+            <h3>Select Augmentation Techniques:</h3>
+            <div class="select-all-container">
+                <label>
+                    <input type="checkbox" id="select-all-augmentation" checked> Select All
+                </label>
+            </div>
+            <div class="options-grid">
+                <label>
+                    <input type="checkbox" name="audio_augmentation" value="time_stretch" checked> 
+                    Time Stretch
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_augmentation" value="pitch_shift" checked> 
+                    Pitch Shift
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_augmentation" value="add_noise" checked> 
+                    Add Noise
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_augmentation" value="speed_up" checked> 
+                    Speed Up
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_augmentation" value="volume_adjust" checked> 
+                    Volume Adjustment
+                </label>
+                <label>
+                    <input type="checkbox" name="audio_augmentation" value="reverb" checked> 
+                    Add Reverb
+                </label>
+            </div>
+            <button id="applyAugmentationBtn" onclick="applyAudioAugmentation()">Apply Augmentation</button>
+        </div>
+
+        <div class="augmentation-results">
+            <div id="original-augmentation-results" class="results-column">
+                <!-- Original audio augmentations will be displayed here -->
+            </div>
+            
+            <div id="preprocessed-augmentation-results" class="results-column">
+                <!-- Preprocessed audio augmentations will be displayed here -->
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="nav-left">
+                <button onclick="window.location.href='/audio_preprocess'">Back</button>
+                <button onclick="window.location.href='/'">Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="{{ url_for('static', path='/js/audio_processing.js') }}"></script>
+</body>
+</html> 
