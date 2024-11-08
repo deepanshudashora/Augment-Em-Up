@@ -1,4 +1,4 @@
-# Augment 'Em Up - Multi-Modal Data Augmentation Tool 🚀
+# Augment 'Em Up - A Data Augmentation Tool 🚀
 
 > *"One tool to augment them all!"*
 
@@ -30,8 +30,6 @@ uvicorn main:app --reload
 4. Upload your data
 5. Choose preprocessing options
 6. Apply augmentations
-
-> *"From text to 3D, we've got your augmentation needs covered!"*
 
 ## Usage
 1. Select data type (Text/Image/Audio/3D)
