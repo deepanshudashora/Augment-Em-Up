@@ -75,3 +75,5 @@ tqdm, pandas, matplotlib
 3. Choose preprocessing options
 4. Apply augmentations
 
+###### "Don’t curse me after seeing main.py!"
+
