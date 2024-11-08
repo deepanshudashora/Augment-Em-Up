@@ -1,4 +1,4 @@
-# Multi-Modal Data Augmentation Tool 🚀
+# Augment 'Em Up - Multi-Modal Data Augmentation Tool 🚀
 
 > *"One tool to augment them all!"*
 
