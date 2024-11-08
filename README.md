@@ -2,6 +2,12 @@
 
 > *"One tool to augment them all!"*
 
+
+<p align="center">
+  <img src="images/home_page.png" alt="Alt text">
+</p>
+
+
 ## Overview
 A comprehensive web application designed to preprocess and augment multiple data types: Text, Images, Audio, and 3D Models. Built with FastAPI and cutting-edge Python libraries, this tool is your Swiss Army knife for data augmentation!
 
